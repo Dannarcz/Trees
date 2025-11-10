@@ -172,3 +172,5 @@ int main(void) {
 
     return 0;
 }
+
+/// pedir datoas crear wichar intar los datos  tareaaa
