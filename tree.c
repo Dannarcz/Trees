@@ -99,6 +99,14 @@ void free_tree(struct Node* root) {
     free(root);
 }
 
+void inorder_desc(struct Node* root) {
+    if (root == NULL) return;
+    inorder_desc(root->right);   // primero los mayores
+    printf("%d ", root->key);    // luego la raíz
+    inorder_desc(root->left);    // finalmente los menores
+}
+
+
 /* 7) Función main: demuestra el uso del BST
    - Crea un árbol vacío
    - Inserta varios valores
@@ -116,7 +124,7 @@ int main(void) {
     //     /  \  /  \
     //   20  40 60  80
 
-    int keys[] = {50, 30, 70, 20, 40, 60, 80};
+    int keys[] = {50, 30, 70, 20, 40, 60, 80, 25, 50};
     size_t n = sizeof(keys) / sizeof(keys[0]);
     for (size_t i = 0; i < n; ++i) {
         root = insert(root, keys[i]);
@@ -134,6 +142,11 @@ int main(void) {
     printf("Postorder: ");
     postorder(root);
     printf("\n");
+
+    printf("Inorder (orden descendente): ");
+    inorder_desc(root);
+    printf("\n");
+
 
     // Buscar un valor existente y uno no existente
     int to_find1 = 60;
